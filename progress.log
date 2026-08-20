@@ -1,0 +1,5 @@
+2026-08-20 — Inspected NAS proof record, Crossroads Amp pages, Chitra minimum requirements, GitHub repository, and fleet AGENTS.md pattern.
+2026-08-20 — Created branch orb-ready-20260820 from main.
+2026-08-20 — Added AGENTS.md, .agents/setup, .agents/resume, OPERATOR-SETTINGS.md, and SUMMARY.md.
+2026-08-20 — Verified the vendor orb manual and added Commit Author and Changes Workflow review items.
+2026-08-20 — Opened draft readiness PR https://github.com/ReticleWorks/orbs-proof-sandbox/pull/2; left it unmerged for operator review.
