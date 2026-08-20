@@ -1,0 +1,7 @@
+#!/bin/sh
+set -eu
+
+cd "$(dirname "$0")/.."
+git rev-parse --show-toplevel >/dev/null
+git status --porcelain=v1 >/dev/null
+echo "resume: ready"

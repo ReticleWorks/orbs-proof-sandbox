@@ -1,0 +1,26 @@
+#!/bin/sh
+set -eu
+
+cd "$(dirname "$0")/.."
+umask 077
+
+# Amp supplies these tools on Debian 12 orbs. Do not log their environment or
+# install a package manager payload for this dependency-free sandbox.
+for tool in git gh amp python3 node rg timeout; do
+  command -v "$tool" >/dev/null 2>&1 || {
+    echo "setup: required tool is missing: $tool" >&2
+    exit 1
+  }
+done
+
+# If a future task adds a locked Node application, install only its checked-in
+# lockfile dependencies. The timeout keeps the hook below Amp's 20-minute cap.
+if [ -f package.json ]; then
+  [ -f package-lock.json ] || {
+    echo "setup: package.json requires a checked-in package-lock.json" >&2
+    exit 1
+  }
+  timeout 600s npm ci --ignore-scripts --no-audit --no-fund
+fi
+
+echo "setup: ready; no sandbox dependencies installed"
